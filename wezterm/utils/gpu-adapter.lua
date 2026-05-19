@@ -16,10 +16,10 @@ local AVAILABLE_BACKENDS = {
 ---Higher the score, the better the device type.
 -- stylua: ignore
 local AVAILABLE_DEVICE_TYPES = {
-   DiscreteGpu   = 4 * 100,
-   IntegratedGpu = 3 * 100,
-   Other         = 2 * 100,
-   Cpu           = 1 * 100,
+  DiscreteGpu   = 4 * 100,
+  IntegratedGpu = 3 * 100,
+  Other         = 2 * 100,
+  Cpu           = 1 * 100,
 }
 
 ---@type GpuInfo[]

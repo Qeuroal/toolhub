@@ -222,29 +222,29 @@ local function create_base_title(pane_title, process_name)
     prefix_icon = ICON_PREFIX.debug
     base_title = base_title:upper()
 
-  -- if built-in Launcher is active
-   elseif base_title == 'Launcher' then
+    -- if built-in Launcher is active
+  elseif base_title == 'Launcher' then
     prefix_icon = ICON_PREFIX.launcher
     base_title = base_title:upper()
 
-   -- if shell is elevated to windows administrator
-   elseif
-      ustr.starts_with(base_title, 'Administrator:') or ustr.ends_with(base_title, '(Admin)')
-   then
-      prefix_icon = ICON_PREFIX.admin
-      base_title = base_title:gsub('Administrator: ', ''):gsub('%(Admin%)', '')
+    -- if shell is elevated to windows administrator
+  elseif
+    ustr.starts_with(base_title, 'Administrator:') or ustr.ends_with(base_title, '(Admin)')
+  then
+    prefix_icon = ICON_PREFIX.admin
+    base_title = base_title:gsub('Administrator: ', ''):gsub('%(Admin%)', '')
 
-   -- if shell is wsl instance
-   elseif ustr.starts_with(process_name, 'wsl') then
-      prefix_icon = ICON_PREFIX.wsl
+    -- if shell is wsl instance
+  elseif ustr.starts_with(process_name, 'wsl') then
+    prefix_icon = ICON_PREFIX.wsl
 
-   -- if `PromptInputLine` or `InputSelector` overlay is active
-   elseif ustr.starts_with(base_title, 'InputSelector:') then
+    -- if `PromptInputLine` or `InputSelector` overlay is active
+  elseif ustr.starts_with(base_title, 'InputSelector:') then
     prefix_icon = ICON_PREFIX.select
     base_title = base_title:gsub('InputSelector: ', '')
-   elseif ustr.starts_with(base_title, 'InputLine:') then
-      prefix_icon = ICON_PREFIX.edit
-      base_title = base_title:gsub('InputLine: ', '')
+  elseif ustr.starts_with(base_title, 'InputLine:') then
+    prefix_icon = ICON_PREFIX.edit
+    base_title = base_title:gsub('InputLine: ', '')
   end
 
   return base_title, prefix_icon
@@ -263,11 +263,11 @@ local function create_title(process_name, base_title, max_width, inset)
     title = base_title
   end
 
-   if wezterm.column_width(title) > max_width - inset then
-      local diff = wezterm.column_width(title) - max_width + inset
-      title = wezterm.truncate_right(title, wezterm.column_width(title) - diff)
+  if wezterm.column_width(title) > max_width - inset then
+    local diff = wezterm.column_width(title) - max_width + inset
+    title = wezterm.truncate_right(title, wezterm.column_width(title) - diff)
   else
-      local padding = max_width - wezterm.column_width(title) - inset
+    local padding = max_width - wezterm.column_width(title) - inset
     title = title .. string.rep(' ', padding)
   end
 
@@ -275,38 +275,38 @@ local function create_title(process_name, base_title, max_width, inset)
 end
 
 local progress_stale = (function()
-   -- stylua: ignore
-   local status_score = {
-      indeterminate = 100,
-      error         = 200,
-      percentage    = 300,
-   }
-   ---@type {sum: integer, last_changed: integer}[]
-   local entries = {}
-   ---Mark progress value as stale if the output hasn't changed in 30 seconds
-   ---@param tab_index integer
-   ---@param pane_index integer
-   ---@param status 'indeterminate'|'error'|'percentage'
-   ---@param pct integer
-   ---@return boolean `true` if stale
-   return function(tab_index, pane_index, status, pct)
-      -- shifting by 5 bits, assuming no more than 31 panes will be
-      -- spawned in a single tab
-      local entry_id = (tab_index << 5) | pane_index
-      if not entries[entry_id] then
-         entries[entry_id] = {}
-         entries[entry_id].sum = status_score[status] + pct
-         entries[entry_id].last_changed = os.time()
-         return false
-      end
-      local sum = status_score[status] + pct
-      if sum ~= entries[entry_id].sum then
-         entries[entry_id].sum = sum
-         entries[entry_id].last_changed = os.time()
-         return false
-      end
-      return os.time() - entries[entry_id].last_changed > PROGRESS_STALE_AFTER
-   end
+  -- stylua: ignore
+  local status_score = {
+    indeterminate = 100,
+    error         = 200,
+    percentage    = 300,
+  }
+  ---@type {sum: integer, last_changed: integer}[]
+  local entries = {}
+  ---Mark progress value as stale if the output hasn't changed in 30 seconds
+  ---@param tab_index integer
+  ---@param pane_index integer
+  ---@param status 'indeterminate'|'error'|'percentage'
+  ---@param pct integer
+  ---@return boolean `true` if stale
+  return function(tab_index, pane_index, status, pct)
+    -- shifting by 5 bits, assuming no more than 31 panes will be
+    -- spawned in a single tab
+    local entry_id = (tab_index << 5) | pane_index
+    if not entries[entry_id] then
+      entries[entry_id] = {}
+      entries[entry_id].sum = status_score[status] + pct
+      entries[entry_id].last_changed = os.time()
+      return false
+    end
+    local sum = status_score[status] + pct
+    if sum ~= entries[entry_id].sum then
+      entries[entry_id].sum = sum
+      entries[entry_id].last_changed = os.time()
+      return false
+    end
+    return os.time() - entries[entry_id].last_changed > PROGRESS_STALE_AFTER
+  end
 end)()
 ---@param options Event.TabTitleOptions
 ---@param tab_index integer
@@ -314,41 +314,41 @@ end)()
 ---@return {icon: string?, status: 'indeterminate'|'percentage'|'error'?}[]
 local function check_progress(options, tab_index, panes)
   if not options.show_progress then
-      return {}
+    return {}
   end
 
-   local progress = {}
-   local limit = 3
+  local progress = {}
+  local limit = 3
 
-   for _, pane in ipairs(panes) do
-      if #progress > limit then
-         break
+  for _, pane in ipairs(panes) do
+    if #progress > limit then
+      break
+    end
+
+    local prog = pane.progress
+    local status = nil
+    local icon = nil
+    local pct = 0
+
+    if prog == 'Indeterminate' then
+      status = 'indeterminate'
+      icon = _ind_to_frame()
+    elseif prog.Percentage ~= nil then
+      status = 'percentage'
+      icon, pct = _pct_to_frame(prog.Percentage), prog.Percentage
+    elseif prog.Error ~= nil then
+      status = 'error'
+      icon, pct = _pct_to_frame(prog.Error), prog.Error
+    end
+
+    if icon and status then
+      if not progress_stale(tab_index, pane.pane_index, status, pct) then
+        table.insert(progress, { icon = icon, status = status })
       end
+    end
+  end
 
-      local prog = pane.progress
-  local status = nil
-      local icon = nil
-      local pct = 0
-
-      if prog == 'Indeterminate' then
-    status = 'indeterminate'
-    icon = _ind_to_frame()
-      elseif prog.Percentage ~= nil then
-         status = 'percentage'
-         icon, pct = _pct_to_frame(prog.Percentage), prog.Percentage
-      elseif prog.Error ~= nil then
-         status = 'error'
-         icon, pct = _pct_to_frame(prog.Error), prog.Error
-      end
-
-      if icon and status then
-         if not progress_stale(tab_index, pane.pane_index, status, pct) then
-            table.insert(progress, { icon = icon, status = status })
-         end
-      end
-   end
-
-   return progress
+  return progress
 end
 
 ---@param options Event.TabTitleOptions
@@ -369,12 +369,12 @@ local function check_unseen_output(options, is_active, panes)
     limit = 0
   end
 
-   for _, pane in ipairs(panes) do
+  for _, pane in ipairs(panes) do
     if count > limit then
       break
     end
 
-      if pane.has_unseen_output then
+    if pane.has_unseen_output then
       count = count + 1
     end
   end
@@ -397,13 +397,13 @@ end
 
 local progress_cells = Cells:new():add_segment(RS.progress):add_segment(RS.padding, ' ')
 local title_cells = Cells:new()
-   :add_segment(RS.scircle_left, ICON_SCIRCLE_LEFT)
-   :add_segment(RS.icon)
-   :add_segment(RS.title, nil, nil, attr(attr.intensity('Bold')))
-   :add_nested_segment(RS.progress)
-   :add_segment(RS.unseen_output)
-   :add_segment(RS.padding, ' ')
-   :add_segment(RS.scircle_right, ICON_SCIRCLE_RIGHT)
+  :add_segment(RS.scircle_left, ICON_SCIRCLE_LEFT)
+  :add_segment(RS.icon)
+  :add_segment(RS.title, nil, nil, attr(attr.intensity('Bold')))
+  :add_nested_segment(RS.progress)
+  :add_segment(RS.unseen_output)
+  :add_segment(RS.padding, ' ')
+  :add_segment(RS.scircle_right, ICON_SCIRCLE_RIGHT)
 
 ---@class Tab
 ---@field title_locked boolean
@@ -445,62 +445,62 @@ function Tab:update_cells(event_opts, tab, hover, max_width)
 
   local process_name = clean_process_name(tab.active_pane.foreground_process_name)
   local base_title, prefix_icon = create_base_title(tab.active_pane.title, process_name)
-   local unseen_icon = check_unseen_output(event_opts, tab.is_active, tab.panes)
-   local progress = check_progress(event_opts, tab.tab_index, tab.panes)
-   local inset = TITLE_INSET.default
+  local unseen_icon = check_unseen_output(event_opts, tab.is_active, tab.panes)
+  local progress = check_progress(event_opts, tab.tab_index, tab.panes)
+  local inset = TITLE_INSET.default
 
-   -- Prefix icons
-   if prefix_icon then
-      inset = inset + TITLE_INSET.increment
-      self.has_icon = true
-      title_cells:update_segment_text(RS.icon, prefix_icon)
-   end
+  -- Prefix icons
+  if prefix_icon then
+    inset = inset + TITLE_INSET.increment
+    self.has_icon = true
+    title_cells:update_segment_text(RS.icon, prefix_icon)
+  end
 
-   -- Unseen output icon
-   if unseen_icon then
-      inset = inset + TITLE_INSET.increment
-      self.has_unseen = true
-      title_cells:update_segment_text(RS.unseen_output, unseen_icon)
-   end
+  -- Unseen output icon
+  if unseen_icon then
+    inset = inset + TITLE_INSET.increment
+    self.has_unseen = true
+    title_cells:update_segment_text(RS.unseen_output, unseen_icon)
+  end
 
-   -- Progress icons - BEGIN
-   inset = inset + (TITLE_INSET.increment * #progress)
-   self.has_progress = #progress > 0
+  -- Progress icons - BEGIN
+  inset = inset + (TITLE_INSET.increment * #progress)
+  self.has_progress = #progress > 0
 
-   ---@type FormatItem[][]
-   local nested_items = {}
+  ---@type FormatItem[][]
+  local nested_items = {}
 
-   if self.has_progress then
-      for i, prog in ipairs(progress) do
-         local prog_colors = 'progress_' .. prog.status .. '_' .. tab_state
-         progress_cells
-            :update_segment_text(RS.progress, prog.icon)
-            :update_segment_colors(RS.progress, colors[prog_colors])
-            :update_segment_colors(RS.padding, colors['text_' .. tab_state])
-         if i == #progress then
-            table.insert(nested_items, progress_cells:render({ RS.progress }))
-         else
-            table.insert(nested_items, progress_cells:render({ RS.progress, RS.padding }))
-         end
+  if self.has_progress then
+    for i, prog in ipairs(progress) do
+      local prog_colors = 'progress_' .. prog.status .. '_' .. tab_state
+      progress_cells
+        :update_segment_text(RS.progress, prog.icon)
+        :update_segment_colors(RS.progress, colors[prog_colors])
+        :update_segment_colors(RS.padding, colors['text_' .. tab_state])
+      if i == #progress then
+        table.insert(nested_items, progress_cells:render({ RS.progress }))
+      else
+        table.insert(nested_items, progress_cells:render({ RS.progress, RS.padding }))
       end
-   end
+    end
+  end
 
-   title_cells:update_nested_segment(RS.progress, nested_items)
-   -- Progress icons - END
+  title_cells:update_nested_segment(RS.progress, nested_items)
+  -- Progress icons - END
 
-   if self.title_locked then
-      process_name = ''
-      base_title = self.locked_title
-   end
+  if self.title_locked then
+    process_name = ''
+    base_title = self.locked_title
+  end
 
-   local title = create_title(process_name, base_title, max_width, inset)
+  local title = create_title(process_name, base_title, max_width, inset)
 
-   title_cells:update_segment_text(RS.title, title)
+  title_cells:update_segment_text(RS.title, title)
 
-   -- stylua: ignore
-   title_cells
-      :update_segment_colors(RS.scircle_left,   colors['scircle_' .. tab_state])
-      :update_segment_colors(RS.icon,           colors['text_' .. tab_state])
+  -- stylua: ignore
+  title_cells
+    :update_segment_colors(RS.scircle_left,   colors['scircle_' .. tab_state])
+    :update_segment_colors(RS.icon,           colors['text_' .. tab_state])
     :update_segment_colors(RS.title,          colors['text_' .. tab_state])
     :update_segment_colors(RS.unseen_output,  colors['unseen_output_' .. tab_state])
     :update_segment_colors(RS.padding,        colors['text_' .. tab_state])
@@ -522,7 +522,7 @@ function Tab:render()
   if self.has_progress then
     variant_idx = variant_idx + 2
   end
-   return title_cells:render(RV[variant_idx])
+  return title_cells:render(RV[variant_idx])
 end
 
 ---@type Tab[]
@@ -539,31 +539,31 @@ M.setup = function(opts)
     wezterm.log_error(err)
   end
 
-   ---@cast valid_opts Event.TabTitleOptions
+  ---@cast valid_opts Event.TabTitleOptions
 
-   if tonumber(wezterm.version:sub(1, 8)) < PROGRESS_MIN_VERSION then
-      valid_opts.show_progress = false
-   end
+  if tonumber(wezterm.version:sub(1, 8)) < PROGRESS_MIN_VERSION then
+    valid_opts.show_progress = false
+  end
 
-   -- CUSTOM EVENT
-   -- Event listener to manually update the tab name
-   -- Tab name will remain locked until the `reset-tab-title` is triggered
-   wezterm.on('tabs.manual-update-tab-title', function(window, pane)
-      local title = nil
+  -- CUSTOM EVENT
+  -- Event listener to manually update the tab name
+  -- Tab name will remain locked until the `reset-tab-title` is triggered
+  wezterm.on('tabs.manual-update-tab-title', function(window, pane)
+    local title = nil
 
-      if ustr.ends_with(wezterm.version, 'custom-build') then
-         title = 'InputLine: Manual Tab Title'
-      end
+    if ustr.ends_with(wezterm.version, 'custom-build') then
+      title = 'InputLine: Manual Tab Title'
+    end
 
-      window:perform_action(
-         wezterm.action.PromptInputLine({
-            title = title,
-            description = wezterm.format({
-               { Foreground = { Color = '#FFFFFF' } },
-               { Attribute = { Intensity = 'Bold' } },
-               { Text = 'Enter new name for tab' },
-            }),
-            action = wezterm.action_callback(function(_window, _pane, line)
+    window:perform_action(
+      wezterm.action.PromptInputLine({
+        title = title,
+        description = wezterm.format({
+          { Foreground = { Color = '#FFFFFF' } },
+          { Attribute = { Intensity = 'Bold' } },
+          { Text = 'Enter new name for tab' },
+        }),
+        action = wezterm.action_callback(function(_window, _pane, line)
           if line ~= nil then
             local tab = window:active_tab()
             local id = tab:tab_id()
@@ -572,24 +572,24 @@ M.setup = function(opts)
         end),
       }),
       pane
-      )
-   end)
+    )
+  end)
 
-   -- CUSTOM EVENT
-   -- Event listener to unlock manually set tab name
-   wezterm.on('tabs.reset-tab-title', function(window, _pane)
-      ---@cast window Window
-      local tab = window:active_tab()
-      local id = tab:tab_id()
-      tab_list[id].title_locked = false
-   end)
+  -- CUSTOM EVENT
+  -- Event listener to unlock manually set tab name
+  wezterm.on('tabs.reset-tab-title', function(window, _pane)
+    ---@cast window Window
+    local tab = window:active_tab()
+    local id = tab:tab_id()
+    tab_list[id].title_locked = false
+  end)
 
-   -- CUSTOM EVENT
-   -- Event listener to manually update the tab name
-   wezterm.on('tabs.toggle-tab-bar', function(window, _pane)
-      ---@cast window Window
-      local effective_config = window:effective_config()
-      window:set_config_overrides({
+  -- CUSTOM EVENT
+  -- Event listener to manually update the tab name
+  wezterm.on('tabs.toggle-tab-bar', function(window, _pane)
+    ---@cast window Window
+    local effective_config = window:effective_config()
+    window:set_config_overrides({
       enable_tab_bar = not effective_config.enable_tab_bar,
       background = effective_config.background,
     })
@@ -601,8 +601,8 @@ M.setup = function(opts)
       tab_list[tab.tab_id] = Tab:new()
     end
 
-      -- `max_width` refers to the `tab_max_width` option set in `config/appearance.lua`
-      tab_list[tab.tab_id]:update_cells(valid_opts, tab, hover, max_width)
+    -- `max_width` refers to the `tab_max_width` option set in `config/appearance.lua`
+    tab_list[tab.tab_id]:update_cells(valid_opts, tab, hover, max_width)
     return tab_list[tab.tab_id]:render()
   end)
 end

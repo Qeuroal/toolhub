@@ -52,9 +52,9 @@ local keys = {
   },
 
   -- cursor movement --
-   { key = 'LeftArrow',  mods = mod.SUPER,     action = act.SendString('\u{1b}OH') },
-   { key = 'RightArrow', mods = mod.SUPER,     action = act.SendString('\u{1b}OF') },
-   { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString('\u{15}') },
+  { key = 'LeftArrow',  mods = mod.SUPER,     action = act.SendString('\u{1b}OH') },
+  { key = 'RightArrow', mods = mod.SUPER,     action = act.SendString('\u{1b}OF') },
+  { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString('\u{15}') },
 
   -- copy/paste --
   { key = 'c',          mods = 'CTRL|SHIFT',  action = act.CopyTo('Clipboard') },
@@ -62,8 +62,8 @@ local keys = {
   { key = 'c',          mods = mod.SUPER,  action = act.CopyTo('Clipboard') },
   { key = 'v',          mods = mod.SUPER,  action = act.PasteFrom('Clipboard') },
 
-   { key = 'n',          mods = 'CTRL|SHIFT',  action = act.SendString('\u{2660}') },
-   { key = 's',          mods = 'CTRL|SHIFT',  action = act.SendString('\u{203D}') },
+  { key = 'n',          mods = 'CTRL|SHIFT',  action = act.SendString('\u{2660}') },
+  { key = 's',          mods = 'CTRL|SHIFT',  action = act.SendString('\u{203D}') },
 
   -- tabs --
   -- tabs: spawn+close
@@ -107,10 +107,10 @@ local keys = {
     mods = mod.SUPER,
     action = wezterm.action_callback(function(window, _pane)
       local dimensions = window:get_dimensions()
-         -- on Windows 11 (the only OS I'm able to test this on), `is_full_screen` is always false (it's a bug).
-         -- Calling `set_inner_size` when the window is actually in fullscreen will cause the
-         -- program UI to completely freeze.
-         if platform.is_win or dimensions.is_full_screen then
+      -- on Windows 11 (the only OS I'm able to test this on), `is_full_screen` is always false (it's a bug).
+      -- Calling `set_inner_size` when the window is actually in fullscreen will cause the
+      -- program UI to completely freeze.
+      if platform.is_win or dimensions.is_full_screen then
         return
       end
       local new_width = dimensions.pixel_width - 50
@@ -123,10 +123,10 @@ local keys = {
     mods = mod.SUPER,
     action = wezterm.action_callback(function(window, _pane)
       local dimensions = window:get_dimensions()
-         -- on Windows 11 (the only OS I'm able to test this on), `is_full_screen` is always false (it's a bug).
-         -- Calling `set_inner_size` when the window is actually in fullscreen will cause the
-         -- program UI to completely freeze.
-         if platform.is_win or dimensions.is_full_screen then
+      -- on Windows 11 (the only OS I'm able to test this on), `is_full_screen` is always false (it's a bug).
+      -- Calling `set_inner_size` when the window is actually in fullscreen will cause the
+      -- program UI to completely freeze.
+      if platform.is_win or dimensions.is_full_screen then
         return
       end
       local new_width = dimensions.pixel_width + 50
