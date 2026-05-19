@@ -1,0 +1,17 @@
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-enter"
+rev = "600614a"
+hash = "c1a2739e9ef2d837030ccb4267be3ed1"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:smart-filter"
+rev = "1962818"
+hash = "c887903a63a2ff520081b6d90a4b3392"
+
+[[plugin.deps]]
+use = "yazi-rs/plugins:chmod"
+rev = "1962818"
+hash = "f0c8c378184d5f8abd1b095a443d336d"
+
+[flavor]
+deps = []

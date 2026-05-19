@@ -1,0 +1,15 @@
+# # onedark
+# [flavor]
+# use = "onedark"
+
+# # tokyo-night
+# [flavor]
+# use = "tokyo-night"
+# # For Yazi 0.4 and above
+# dark = "tokyo-night"
+
+# catppuccin
+[flavor]
+use = "catppuccin"
+# For Yazi 0.4 and above
+dark = "catppuccin"

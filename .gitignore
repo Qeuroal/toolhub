@@ -1,0 +1,6 @@
+.DS_Store
+test.sh
+*_tmp*
+tags
+.aider*
+*.bak

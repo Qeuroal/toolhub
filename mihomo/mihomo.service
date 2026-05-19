@@ -1,0 +1,13 @@
+[Unit]
+Description=mihomo
+
+[Service]
+Type=simple
+User=qeuroal
+ExecStart=/usr/local/bin/mihomo
+Restart=always
+RestartSec=30
+StartLimitInterval=0
+
+[Install]
+WantedBy=multi-user.target graphical.target

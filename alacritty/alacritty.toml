@@ -1,0 +1,99 @@
+[general]
+live_config_reload = true
+# # window
+# working_directory = "C:\\Users\\Qeuroal"        # on Windows
+
+# import external files
+import = [
+  "./catppuccin/catppuccin-macchiato.toml"
+]
+
+[colors]
+# # 如果为‘true’，则使用亮色变体绘制粗体文本。
+# draw_bold_text_with_bright_colors = true | false
+draw_bold_text_with_bright_colors = false
+
+# Colors which should be used to draw the terminal cursor.
+# If these are unset, the cursor color will be the inverse of the cell color.
+[colors.cursor]
+text = '0xffffff'
+cursor = '0xff6347'
+
+[colors.vi_mode_cursor]
+text = "0xffffff"
+cursor = "0xff6347"
+
+
+[font]
+size = 21.0
+normal = { family = "JetBrainsMonoNL Nerd Font", style = "Regular" }
+bold = { family = "JetBrainsMonoNL Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMonoNL Nerd Font", style = "Italic" }
+bold_italic = { family = "JetBrainsMonoNL Nerd Font", style = "Bold Italic" }
+
+offset = { x = 0, y = 1 }
+glyph_offset = { x = 0, y = 1 }
+
+
+[window]
+decorations = "Full"
+startup_mode = "Maximized"
+dynamic_title = true
+opacity = 0.95
+decorations_theme_variant = "Dark"
+# maping option of macos to alt
+option_as_alt = "OnlyLeft"
+# resize_increments = true      # make the dwm greater gap
+
+# # On Windows
+# [terminal.shell]
+# program = "cmd"
+
+
+[scrolling]
+# 回滚缓冲区中的最大行数,指定“0”将禁用滚动。
+# history = 100000
+history = 100000
+# 滚动行数
+multiplier = 0
+
+
+[cursor]
+style = { shape = "block", blinking = "Never" }
+unfocused_hollow = true
+thickness = 0.35
+
+
+[selection]
+semantic_escape_chars = ",│`|:\"'' ()[]{}<>\t"
+save_to_clipboard = false
+
+[mouse]
+hide_when_typing = false
+
+[env]
+TERM = "xterm-256color"
+
+[keyboard]
+bindings = [
+  { key = "I", mods = "Control | Shift", action = "SpawnNewInstance" },
+  { key = "N", mods = "Control | Shift", action = "CreateNewWindow" },
+  { key = "T", mods = "Control | Shift", action = "CreateNewTab" },
+  { key = "Q", mods = "Control | Shift", action = "Quit" },
+  { key = "Tab", mods = "Control", action = "SelectNextTab" },
+  { key = "Tab", mods = "Control | Shift", action = "SelectPreviousTab" },
+  { key = "C", mods = "Control | Shift", action = "Copy" },
+  { key = "V", mods = "Control | Shift", action = "Paste" },
+  { key = "Q", mods = "Control | Shift", action = "Quit" },
+  { key = "M", mods = "Control | Shift", mode = "~Vi", action = "ToggleMaximized" },
+  { key = "F", mods = "Command | Control", mode = "~Vi", action = "ToggleFullscreen" },
+  { key = "PageUp", mods = "Shift", mode = "~Vi", action = "ScrollPageUp" },
+  { key = "PageDown", mods = "Shift", mode = "~Vi", action = "ScrollPageDown" },
+  { key = "PageUp", mods = "Control | Shift", mode = "~Vi", action = "ScrollHalfPageUp" },
+  { key = "PageDown", mods = "Control | Shift", mode = "~Vi", action = "ScrollHalfPageDown" },
+  { key = "B", mods = "Control | Shift", mode = "~Vi", action = "ScrollPageUp" },
+  { key = "f", mods = "Control | Shift", mode = "~Vi", action = "ScrollPageDown" },
+  { key = "U", mods = "Control | Shift", mode = "~Vi", action = "ScrollHalfPageUp" },
+  { key = "D", mods = "Control | Shift", mode = "~Vi", action = "ScrollHalfPageDown" },
+]
+
