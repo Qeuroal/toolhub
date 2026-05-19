@@ -1,0 +1,3 @@
+[submodule "toolstore"]
+	path = toolstore
+	url = https://github.com/qeuroal/toolstore
