@@ -13,3 +13,11 @@
 use = "catppuccin"
 # For Yazi 0.4 and above
 dark = "catppuccin"
+
+[git]
+modified = { fg = "blue" }
+deleted  = { fg = "red", bold = true }
+unknown_sign  = " "
+modified_sign = "M"
+deleted_sign  = "D"
+clean_sign    = "✔"
