@@ -41,6 +41,7 @@ return {
   enable_tab_bar = true,
   hide_tab_bar_if_only_one_tab = false,
   use_fancy_tab_bar = false,
+  mouse_wheel_scrolls_tabs = false, -- 关闭滚轮切换标签页
   tab_max_width = 23,
   show_tab_index_in_tab_bar = false,
   switch_to_last_active_tab_when_closing_tab = true,

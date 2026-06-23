@@ -280,6 +280,17 @@ local key_tables = {
 
 ---@type MouseBinding[]
 local mouse_bindings = {
+  -- Disable mouse wheel scrolling
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'NONE',
+    action = act.Nop,
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'NONE',
+    action = act.Nop,
+  },
   -- Ctrl-click will open the link under the mouse cursor
   {
     event = { Up = { streak = 1, button = 'Left' } },
