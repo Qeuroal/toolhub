@@ -13,3 +13,8 @@ function y() {
 ```
 
 1. 下载配置文件夹到 `~/.config/yazi`
+
+# references
+
+- [preset](https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset)
+
