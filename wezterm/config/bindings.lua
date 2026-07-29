@@ -52,6 +52,8 @@ local keys = {
   },
 
   -- cursor movement --
+  -- Bypass the IME so the tmux prefix (C-q) reaches tmux on the first press.
+  { key = 'q',          mods = 'CTRL',        action = act.SendString('\u{11}') },
   { key = 'LeftArrow',  mods = mod.SUPER,     action = act.SendString('\u{1b}OH') },
   { key = 'RightArrow', mods = mod.SUPER,     action = act.SendString('\u{1b}OF') },
   { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString('\u{15}') },
