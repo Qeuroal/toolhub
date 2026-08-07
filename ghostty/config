@@ -1,10 +1,19 @@
 # font
-font-family = "JetBrainsMonoNerdFont"
+font-family = "JetBrainsMonoNL Nerd Font"
+# 解决中文字体过小的问题jjj
+font-codepoint-map = U+3400-U+4DBF=LXGW WenKai Mono
+font-codepoint-map = U+4E00-U+9FFF=LXGW WenKai Mono
+font-codepoint-map = U+F900-U+FAFF=LXGW WenKai Mono
+font-codepoint-map = U+3000-U+303F=LXGW WenKai Mono
+font-codepoint-map = U+FF00-U+FFEF=LXGW WenKai Mono
+# 解决 Dingbats 过小的问题
+# font-codepoint-map = U+2714=Zapf Dingbats
+font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
 font-size = 20
 font-thicken = true
 font-thicken-strength = 255
 window-inherit-font-size = true
-window-title-font-family = "JetBrainsMonoNL Nerd Font"
+# window-title-font-family = "JetBrainsMonoNL Nerd Font"
 adjust-underline-position = 4
 
 # cell
@@ -44,7 +53,9 @@ background-blur = true
 maximize = true
 # fullscreen = true
 window-decoration = auto
-gtk-titlebar = false
+# 隐藏title
+macos-titlebar-style = tabs
+gtk-titlebar-style = tabs
 
 # tab
 gtk-tabs-location = top
@@ -59,10 +70,15 @@ auto-update = check
 # other
 # copy-on-select = clipboard
 
+# confirm
+confirm-close-surface = true
+
 # keymapping
 keybind = clear
 keybind = ctrl+shift+u=scroll_page_up
 keybind = ctrl+shift+d=scroll_page_down
+keybind = ctrl+shift+y=scroll_page_lines:-1
+keybind = ctrl+shift+e=scroll_page_lines:1
 # keybind = super+comma=unbind
 keybind = ctrl+shift+f=write_scrollback_file:paste
 # keybind = ctrl+shift+f=write_scrollback_file:open
@@ -97,6 +113,7 @@ keybind = super+shift+,=reload_config
 keybind = super+shift+w=close_window
 # keybind = super+shift+z=redo
 keybind = ctrl+shift+tab=previous_tab
+keybind = ctrl+tab=next_tab
 # keybind = super+bracket_left=goto_split:previous
 # keybind = super+bracket_right=goto_split:next
 keybind = super+digit_1=goto_tab:1
@@ -143,7 +160,6 @@ keybind = super+w=close_surface
 # keybind = super+z=undo
 # keybind = alt+arrow_left=esc:b
 # keybind = alt+arrow_right=esc:f
-keybind = ctrl+tab=next_tab
 # keybind = shift+end=adjust_selection:end
 # keybind = shift+home=adjust_selection:home
 # keybind = shift+page_down=adjust_selection:page_down
@@ -153,7 +169,9 @@ keybind = ctrl+tab=next_tab
 # keybind = shift+arrow_right=adjust_selection:right
 # keybind = shift+arrow_up=adjust_selection:up
 keybind = copy=copy_to_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
 keybind = paste=paste_from_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
 #<}}}
 
 

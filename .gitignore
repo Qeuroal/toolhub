@@ -1,6 +1,6 @@
 .DS_Store
 test.sh
-*_tmp*
+tmp*
 tags
 .aider*
 *.bak
