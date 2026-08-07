@@ -7,6 +7,7 @@ return {
   status_update_interval = 1000,
   audible_bell = 'Disabled',
 
+  macos_forward_to_ime_modifier_mask = 'SHIFT|CTRL',
   scrollback_lines = 20000,
 
   hyperlink_rules = {

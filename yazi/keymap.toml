@@ -8,6 +8,10 @@ prepend_keymap = [
   { on = [ "g", "c", "c" ], run = "cd ~/.config/clash", desc = "Go ~/.config/clash" },
   { on = [ "e", "c", "p" ], run = "shell --block -- nvim ~/.config/pithy_custom_config", desc = "Edit ~/.config/pithy_custom_config" },
   { on = [ "e", "s", "c" ], run = "shell --block -- nvim ~/.ssh/config", desc = "Edit ~/.ssh/config" },
-  { on = [ "F" ], run = "plugin smart-filter", desc = "Smart filter" },
   { on = [ "c", "m" ], run = "plugin chmod", desc = "Chmod on selected files" },
+
+  #{{{> plugins
+  # smart filter
+  { on = [ "F" ], run = "plugin smart-filter", desc = "Smart filter" },
+  #<}}}
 ]
