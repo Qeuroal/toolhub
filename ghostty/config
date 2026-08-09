@@ -1,11 +1,14 @@
 # font
 font-family = "JetBrainsMonoNL Nerd Font"
-# 解决中文字体过小的问题jjj
-font-codepoint-map = U+3400-U+4DBF=LXGW WenKai Mono
-font-codepoint-map = U+4E00-U+9FFF=LXGW WenKai Mono
-font-codepoint-map = U+F900-U+FAFF=LXGW WenKai Mono
-font-codepoint-map = U+3000-U+303F=LXGW WenKai Mono
-font-codepoint-map = U+FF00-U+FFEF=LXGW WenKai Mono
+# 解决中文字体过小的问题
+# 方法1
+font-family = "Noto Sans Mono CJK SC"
+# # 方法2
+# font-codepoint-map = U+3400-U+4DBF=LXGW WenKai Mono
+# font-codepoint-map = U+4E00-U+9FFF=LXGW WenKai Mono
+# font-codepoint-map = U+F900-U+FAFF=LXGW WenKai Mono
+# font-codepoint-map = U+3000-U+303F=LXGW WenKai Mono
+# font-codepoint-map = U+FF00-U+FFEF=LXGW WenKai Mono
 # 解决 Dingbats 过小的问题
 # font-codepoint-map = U+2714=Zapf Dingbats
 font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
@@ -55,6 +58,7 @@ maximize = true
 window-decoration = auto
 # 隐藏title
 macos-titlebar-style = tabs
+# macos-titlebar-proxy-icon = hidden
 gtk-titlebar-style = tabs
 
 # tab
