@@ -1,7 +1,9 @@
 # font
 font-family = "JetBrainsMonoNL Nerd Font"
-font-family = "Noto Sans Mono CJK SC" # 解决中文字体过小的问题
-font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2 # 解决 Dingbats 过小的问题
+# 解决中文字体过小的问题
+font-family = "Noto Sans Mono CJK SC"
+# 解决 Dingbats 过小的问题
+font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
 font-size = 20
 font-thicken = true
 font-thicken-strength = 255
