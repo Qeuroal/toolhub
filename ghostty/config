@@ -1,6 +1,6 @@
 # font
 font-family = "JetBrainsMonoNL Nerd Font"
-# 解决中文字体过小的问题
+font-family = "LXGW WenKai Mono"
 font-family = "Noto Sans Mono CJK SC"
 # 解决 Dingbats 过小的问题
 font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
