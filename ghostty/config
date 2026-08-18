@@ -8,7 +8,7 @@ font-size = 20
 font-thicken = true
 font-thicken-strength = 255
 window-inherit-font-size = true
-# window-title-font-family = "JetBrainsMonoNL Nerd Font"
+window-title-font-family = "JetBrainsMonoNL Nerd Font"
 adjust-underline-position = 4
 
 # cell
