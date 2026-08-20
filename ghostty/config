@@ -62,6 +62,7 @@ split-divider-color = #3366ff
 
 # update
 auto-update = check
+auto-update-channel = tip
 
 # other
 # copy-on-select = clipboard
