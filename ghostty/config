@@ -134,8 +134,10 @@ keybind = super+6=goto_tab:6
 keybind = super+7=goto_tab:7
 keybind = super+8=goto_tab:8
 keybind = super+9=last_tab
+keybind = ctrl+enter=text:\r
+# keybind = ctrl+catch_all=ignore
 # keybind = super+backspace=text:\\x15
-# keybind = super+enter=toggle_fullscreen
+keybind = super+enter=toggle_fullscreen
 # keybind = super+end=scroll_to_bottom
 # keybind = super+home=scroll_to_top
 # keybind = super+page_down=scroll_page_down
@@ -169,5 +171,3 @@ keybind = ctrl+shift+c=copy_to_clipboard
 keybind = paste=paste_from_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
 #<}}}
-
-
