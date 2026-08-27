@@ -24,6 +24,7 @@ extract = [
   { run = 'ya pub extract --list %s', desc = "Extract here", for = "windows" },
 ]
 play = [
+  { run = 'open -a VLC %s', orphan = true, for = "macos" },
   { run = 'mpv --force-window %s', orphan = true, for = "unix" },
   { run = '''mediainfo %s1; echo "Press enter to exit"; read _''', block = true, desc = "Show media info", for = "unix" },
   { run = '"C:\Program Files\mpv.exe" %s', orphan = true, for = "windows" },
@@ -47,6 +48,8 @@ rules = [
   { url = "*/", use = [ "edit", "open", "reveal" ] },
   # Office
   { url = "*.{doc,docx,pdf,xls,xlsx,ppt,pptx}", use = [ "open", "reveal" ] },
+  # MPEG transport stream
+  { url = "*.ts", use = [ "play", "reveal" ] },
   # Text
   { mime = "text/*", use = [ "edit", "open", "reveal" ] },
   # Image
