@@ -152,6 +152,7 @@ keybind = super+c=copy_to_clipboard
 # keybind = super+d=new_split:right
 # keybind = super+k=clear_screen
 keybind = super+n=new_window
+keybind = ctrl+shift+n=new_window
 keybind = super+q=quit
 keybind = super+t=new_tab
 keybind = super+v=paste_from_clipboard
