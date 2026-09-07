@@ -62,6 +62,7 @@ split-divider-color = #3366ff
 
 # update
 auto-update = check
+auto-update-channel = tip
 
 # other
 # copy-on-select = clipboard
@@ -76,12 +77,13 @@ keybind = ctrl+shift+d=scroll_page_down
 keybind = ctrl+shift+y=scroll_page_lines:-1
 keybind = ctrl+shift+e=scroll_page_lines:1
 # keybind = super+comma=unbind
-keybind = ctrl+shift+f=write_scrollback_file:paste
-# keybind = ctrl+shift+f=write_scrollback_file:open
+keybind = super+f=start_search
+keybind = ctrl+shift+f=start_search
+keybind = performable:escape=end_search
 
 #{{{> default
 # keybind = super+alt+shift+j=write_screen_file:open
-keybind = super+alt+shift+w=close_all_windows
+keybind = all:super+alt+shift+w=close_window
 # keybind = super+ctrl+shift+j=write_screen_file:copy
 # keybind = super+alt+arrow_down=goto_split:down
 # keybind = super+alt+arrow_left=goto_split:left
@@ -97,7 +99,7 @@ keybind = super+alt+w=close_tab:this
 # keybind = super+ctrl+f=toggle_fullscreen
 # keybind = super+shift+bracket_left=previous_tab
 # keybind = super+shift+bracket_right=next_tab
-keybind = super+shift+,=reload_config
+keybind = super+shift+comma=reload_config
 # keybind = super+shift+enter=toggle_split_zoom
 # keybind = super+shift+arrow_down=jump_to_prompt:1
 # keybind = super+shift+arrow_up=jump_to_prompt:-1
@@ -112,19 +114,6 @@ keybind = ctrl+shift+tab=previous_tab
 keybind = ctrl+tab=next_tab
 # keybind = super+bracket_left=goto_split:previous
 # keybind = super+bracket_right=goto_split:next
-keybind = super+digit_1=goto_tab:1
-keybind = super+digit_2=goto_tab:2
-keybind = super+digit_3=goto_tab:3
-keybind = super+digit_4=goto_tab:4
-keybind = super+digit_5=goto_tab:5
-keybind = super+digit_6=goto_tab:6
-keybind = super+digit_7=goto_tab:7
-keybind = super+digit_8=goto_tab:8
-# keybind = super+equal=increase_font_size:1
-# keybind = super++increase_font_size:1
-keybind = super+,=open_config
-# keybind = super+-=decrease_font_size:1
-# keybind = super+0=reset_font_size
 keybind = super+1=goto_tab:1
 keybind = super+2=goto_tab:2
 keybind = super+3=goto_tab:3
@@ -151,6 +140,7 @@ keybind = super+c=copy_to_clipboard
 # keybind = super+d=new_split:right
 # keybind = super+k=clear_screen
 keybind = super+n=new_window
+keybind = ctrl+shift+n=new_window
 keybind = super+q=quit
 keybind = super+t=new_tab
 keybind = super+v=paste_from_clipboard
@@ -171,3 +161,5 @@ keybind = ctrl+shift+c=copy_to_clipboard
 keybind = paste=paste_from_clipboard
 keybind = ctrl+shift+v=paste_from_clipboard
 #<}}}
+
+# vim:ft=conf:tw=120:ts=4:sts=-1:sw=0:et:fdm=marker:

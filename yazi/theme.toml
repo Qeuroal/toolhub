@@ -10,6 +10,5 @@
 
 # catppuccin
 [flavor]
-use = "catppuccin"
-# For Yazi 0.4 and above
 dark = "catppuccin"
+light = "catppuccin"
