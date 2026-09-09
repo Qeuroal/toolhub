@@ -1,3 +1,7 @@
+# config
+
+## macos/linux
+
 1. 在 `.bashrc` 或 `.zshrc` 中添加如下:
 
 ```bashrc
