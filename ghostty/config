@@ -41,8 +41,8 @@ theme = catppuccin-macchiato.conf
 # window-theme = ghostty
 
 # background
-background-opacity = 0.9
-background-blur = true
+background-opacity = 1
+background-blur = false
 
 # window
 maximize = true
