@@ -48,13 +48,14 @@ background-blur = false
 maximize = true
 # fullscreen = true
 window-decoration = auto
-# 隐藏title
+# macOS 显示标签页; Linux GTK 隐藏标题栏和标签栏
 macos-titlebar-style = tabs
 # macos-titlebar-proxy-icon = hidden
-gtk-titlebar-style = tabs
+gtk-titlebar-style = native
+gtk-titlebar = false
 
 # tab
-gtk-tabs-location = top
+gtk-tabs-location = hidden
 
 # split
 unfocused-split-opacity = 0.7
