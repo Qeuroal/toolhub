@@ -13,21 +13,52 @@ app-notifications = clipboard-copy,config-reload
 font-family = "JetBrainsMonoNL Nerd Font"
 font-family = "LXGW WenKai Mono"
 font-family = "Noto Sans Mono CJK SC"
-# 解决 Dingbats 过小的问题
-font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
+
+# 字体配置
 font-size = 20
 font-thicken = true
 font-thicken-strength = 255
+
+# 字体映射
+## 解决 Dingbats 过小的问题
+# font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
+font-codepoint-map = U+2500-U+27BF=Noto Sans Symbols 2
+
+# 允许字体缺乏时合成
+font-synthetic-style = bold,italic,bold-italic
+
+# 高级字体特性（font-feature）配置控制字体的 OpenType 功能(开启或禁用),开启后配合下方的font-shaping-break使用
+font-feature = calt
+
+# 连字断开显示配合font-feature使用, 在光标指时候显示原始的符号比如!=显示
+font-shaping-break = cursor
+
+# 字体渲染模式(linear, native, linear-corrected)
+alpha-blending = linear-corrected
 
 #====================== 字体微调系统 ======================
 # cell
 adjust-cell-width = 0
 adjust-cell-height = 0
-# 下划线, 上划线和光标粗细
+
+# 基线baseline调整
+adjust-font-baseline = 1
+
+# 下划线
 adjust-underline-position = 4
 adjust-underline-thickness = 1
+
+# 上划线
 adjust-overline-thickness = 2
+
+# 光标粗细
 adjust-cursor-thickness = 4
+
+# unicode 字符宽度
+grapheme-width-method = unicode
+
+# linux freetype 字体渲染
+freetype-load-flags = hinting,no-force-autohint,no-monochrome,autohint,light
 
 #====================== 主题选用 ======================
 # theme
@@ -36,17 +67,31 @@ theme = catppuccin-macchiato.conf
 # window-theme = ghostty
 
 #====================== 光标行为 ======================
-# cursor
+# 光标形式 block, bar, underline, block_hollow
 cursor-style = block
+# 光标是否闪烁
 cursor-style-blink = false
+# 光标颜色
 cursor-color = #ff6347
+# 光标前景色
 cursor-text = #ffffff
-# cursor-invert-fg-bg = true
+# 光标透明度
 cursor-opacity = 1
+# 光标可以在终端移动
+cursor-click-to-move = false
 
 #====================== 鼠标行为 ======================
-# mouse
+# 输入时隐藏鼠标
 mouse-hide-while-typing = true
+
+# 输出日志时保持查看位置, 不自动跳到底部
+scroll-to-bottom = keystroke,no-output
+
+# Shift 鼠标选择交给终端
+mouse-shift-capture = false
+
+# 允许程序使用鼠标
+mouse-reporting = true
 
 #====================== 背景和分屏行为 ======================
 # background
@@ -55,6 +100,38 @@ background-blur = false
 # split
 unfocused-split-opacity = 0.7
 split-divider-color = #3366ff
+
+# 搜索高亮颜色配置
+search-foreground = "#000000"
+search-background = "#FFD54F"
+
+search-selected-foreground = "#000000"
+search-selected-background = "#FF7043"
+
+#================= 滚动屏幕和链接link设置 ================
+# 历史滚动缓冲区最多占用多少内存(字节)
+scrollback-limit = 200000000
+
+# 侧边滚动条, never, system
+scrollbar = never
+
+# 点击link跳转
+link-url = true
+
+# link-previews预览
+link-previews = true
+
+# link正则匹配+点击触发动作, 包括不限于本地点击, localhost服务, IP服务等, 暂时ghostty无法配置
+#link = regex="localhost:[0-9]+" action="open"
+#link = regex="http://[0-9\\.]+:[0-9]+" action="open"
+#link = regex="(/var/log/[^ ]+)" action="open"
+#link = regex="(/[^ ]+\\.(py|js|ts|json))" action="open"
+
+# class中更改应用程序的类名/ID, 适用于Linux
+# class = "com.mycompany.terminal"
+
+# 终端启动后默认文件夹, 默认是继承启动进程的工作目录, 默认是home
+#working-directory = "inherit"
 
 #====================== keybind 字体屏幕和命令终端设置 ======================
 # keymapping
@@ -86,9 +163,11 @@ keybind = ctrl+shift+e=scroll_page_lines:1
 #====================== tab 设置 ======================
 # 新增, 切换和关闭标签页
 keybind = super+t=new_tab
+# 撤销关闭的tab
+keybind = super+shift+t=undo
 keybind = super+shift+bracket_left=previous_tab
-keybind = super+shift+bracket_right=next_tab
 keybind = ctrl+shift+tab=previous_tab
+keybind = super+shift+bracket_right=next_tab
 keybind = ctrl+tab=next_tab
 keybind = super+alt+w=close_tab:this
 # 按序号切换标签页
@@ -101,7 +180,7 @@ keybind = super+6=goto_tab:6
 keybind = super+7=goto_tab:7
 keybind = super+8=goto_tab:8
 keybind = super+9=last_tab
-#
+
 #====================== windows 和分屏操作 ======================
 # 新建窗口, 关闭当前终端和关闭窗口
 keybind = super+n=new_window
