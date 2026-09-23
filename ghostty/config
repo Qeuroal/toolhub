@@ -1,4 +1,10 @@
+#====================== 命令和通知 ======================
+# 复制和配置重载时显示应用内通知 (仅 Linux GTK 生效)
+app-notifications = clipboard-copy,config-reload
+#
+#====================== 字体和渲染设置 ======================
 # font
+# 字体按原有顺序设置, 包含中文回退字体
 font-family = "JetBrainsMonoNL Nerd Font"
 font-family = "LXGW WenKai Mono"
 font-family = "Noto Sans Mono CJK SC"
@@ -7,93 +13,80 @@ font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
 font-size = 20
 font-thicken = true
 font-thicken-strength = 255
-window-inherit-font-size = true
-window-title-font-family = "JetBrainsMonoNL Nerd Font"
-adjust-underline-position = 4
 
+#====================== 字体微调系统 ======================
 # cell
 adjust-cell-width = 0
 adjust-cell-height = 0
-
-# cursor
-cursor-style = block
-shell-integration-features = no-cursor
-cursor-style-blink = false
-cursor-color = #ff6347
-cursor-text = #ffffff
-macos-option-as-alt = true
+# 下划线, 上划线和光标粗细
+adjust-underline-position = 4
 adjust-underline-thickness = 1
-adjust-cursor-thickness = 4
 adjust-overline-thickness = 2
-cursor-opacity = 1
+adjust-cursor-thickness = 4
 
-# mouse
-mouse-hide-while-typing = true
-
-# clip
-clipboard-read = "allow"
-clipboard-write = "allow"
-
-# 复制和配置重载时显示应用内通知 (仅 Linux GTK 生效)
-app-notifications = clipboard-copy,config-reload
-
+#====================== 主题选用 ======================
 # theme
 # onedarkpro, details: ghostty +list-themes
 theme = catppuccin-macchiato.conf
-# cursor-invert-fg-bg = true
 # window-theme = ghostty
 
+#====================== 光标行为 ======================
+# cursor
+cursor-style = block
+cursor-style-blink = false
+cursor-color = #ff6347
+cursor-text = #ffffff
+# cursor-invert-fg-bg = true
+cursor-opacity = 1
+
+#====================== 鼠标行为 ======================
+# mouse
+mouse-hide-while-typing = true
+
+#====================== 背景和分屏行为 ======================
 # background
 background-opacity = 1
 background-blur = false
-
-# window
-maximize = true
-# fullscreen = true
-window-decoration = auto
-# macOS 显示标签页; Linux GTK 隐藏标题栏和标签栏
-macos-titlebar-style = tabs
-# macos-titlebar-proxy-icon = hidden
-gtk-titlebar-style = native
-gtk-titlebar = false
-
-# tab
-gtk-tabs-location = hidden
-
 # split
 unfocused-split-opacity = 0.7
 split-divider-color = #3366ff
 
-# update
-auto-update = check
-auto-update-channel = tip
-
-# other
-# copy-on-select = clipboard
-
-# confirm
-confirm-close-surface = true
-
+#====================== keybind 字体屏幕和命令终端设置 ======================
 # keymapping
+# 清空默认快捷键, 此项须放在所有自定义快捷键之前
 keybind = clear
+#{{{> default
+# 重新载入配置
+keybind = super+shift+comma=reload_config
+# keybind = super+comma=unbind
+# 复制和粘贴
+keybind = super+c=copy_to_clipboard
+keybind = copy=copy_to_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = paste=paste_from_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+# 全屏, 退出和发送回车
+keybind = super+enter=toggle_fullscreen
+keybind = super+q=quit
+keybind = ctrl+enter=text:\r
+
+#====================== keybind 翻页和滚屏设置 ======================
+# 按页滚动和逐行滚动
 keybind = ctrl+shift+u=scroll_page_up
 keybind = ctrl+shift+d=scroll_page_down
 keybind = ctrl+shift+y=scroll_page_lines:-1
 keybind = ctrl+shift+e=scroll_page_lines:1
-# keybind = super+comma=unbind
-keybind = super+f=start_search
-keybind = ctrl+shift+f=start_search
-keybind = performable:escape=end_search
 
-#{{{> default
-keybind = all:super+alt+shift+w=close_window
-keybind = super+alt+w=close_tab:this
+#====================== tab 设置 ======================
+# 新增, 切换和关闭标签页
+keybind = super+t=new_tab
 keybind = super+shift+bracket_left=previous_tab
 keybind = super+shift+bracket_right=next_tab
-keybind = super+shift+comma=reload_config
-keybind = super+shift+w=close_window
 keybind = ctrl+shift+tab=previous_tab
 keybind = ctrl+tab=next_tab
+keybind = super+alt+w=close_tab:this
+# 按序号切换标签页
 keybind = super+1=goto_tab:1
 keybind = super+2=goto_tab:2
 keybind = super+3=goto_tab:3
@@ -103,19 +96,59 @@ keybind = super+6=goto_tab:6
 keybind = super+7=goto_tab:7
 keybind = super+8=goto_tab:8
 keybind = super+9=last_tab
-keybind = ctrl+enter=text:\r
-keybind = super+enter=toggle_fullscreen
-keybind = super+c=copy_to_clipboard
+#
+#====================== windows 和分屏操作 ======================
+# 新建窗口, 关闭当前终端和关闭窗口
 keybind = super+n=new_window
 keybind = ctrl+shift+n=new_window
-keybind = super+q=quit
-keybind = super+t=new_tab
-keybind = super+v=paste_from_clipboard
 keybind = super+w=close_surface
-keybind = copy=copy_to_clipboard
-keybind = ctrl+shift+c=copy_to_clipboard
-keybind = paste=paste_from_clipboard
-keybind = ctrl+shift+v=paste_from_clipboard
+keybind = super+shift+w=close_window
+keybind = all:super+alt+shift+w=close_window
+
+#====================== 搜索设置 ======================
+keybind = super+f=start_search
+keybind = ctrl+shift+f=start_search
+keybind = performable:escape=end_search
 #<}}}
+
+#====================== 终端 windows 窗口控制 ======================
+# window
+maximize = true
+# fullscreen = true
+window-decoration = auto
+window-inherit-font-size = true
+window-title-font-family = "JetBrainsMonoNL Nerd Font"
+# confirm
+confirm-close-surface = true
+
+#====================== 鼠标和系统剪贴板安全设置 ======================
+# clip
+clipboard-read = "allow"
+clipboard-write = "allow"
+# other
+# copy-on-select = clipboard
+
+#====================== shell 设置 ======================
+# 禁止 shell 集成修改光标样式
+shell-integration-features = no-cursor
+
+#====================== macOS 独有设置 ======================
+# macOS 显示标签页; Linux GTK 隐藏标题栏和标签栏
+# macOS 标题栏和 Option 键行为
+macos-titlebar-style = tabs
+# macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+#====================== Linux 独有设置 ======================
+# Linux GTK 标题栏和标签栏
+# tab
+gtk-titlebar-style = native
+gtk-titlebar = false
+gtk-tabs-location = hidden
+
+#====================== 自动更新设置 ======================
+# update
+auto-update = check
+auto-update-channel = tip
 
 # vim:ft=conf:tw=120:ts=4:sts=-1:sw=0:et:fdm=marker:
