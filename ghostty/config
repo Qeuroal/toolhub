@@ -98,8 +98,8 @@ keybind = super+alt+w=close_tab:this
 # keybind = super+ctrl+arrow_right=resize_split:right,10
 # keybind = super+ctrl+arrow_up=resize_split:up,10
 # keybind = super+ctrl+f=toggle_fullscreen
-# keybind = super+shift+bracket_left=previous_tab
-# keybind = super+shift+bracket_right=next_tab
+keybind = super+shift+bracket_left=previous_tab
+keybind = super+shift+bracket_right=next_tab
 keybind = super+shift+comma=reload_config
 # keybind = super+shift+enter=toggle_split_zoom
 # keybind = super+shift+arrow_down=jump_to_prompt:1
