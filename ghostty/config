@@ -6,7 +6,9 @@
 #====================== 命令和通知 ======================
 # 复制和配置重载时显示应用内通知 (仅 Linux GTK 生效)
 app-notifications = clipboard-copy,config-reload
-#
+# 关闭窗口不确认
+confirm-close-surface = false
+
 #====================== 字体和渲染设置 ======================
 # font
 # 字体按原有顺序设置, 包含中文回退字体
@@ -202,8 +204,6 @@ maximize = true
 window-decoration = auto
 window-inherit-font-size = true
 window-title-font-family = "JetBrainsMonoNL Nerd Font"
-# confirm
-confirm-close-surface = true
 
 #====================== 鼠标和系统剪贴板安全设置 ======================
 # clip
