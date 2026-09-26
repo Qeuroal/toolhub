@@ -23,7 +23,7 @@ font-thicken-strength = 255
 
 # 字体映射
 # ## ⇡⇣ 问题
-# font-codepoint-map = U+21E1,U+21E3=Apple Symbols
+font-codepoint-map = U+21E1,U+21E3=Apple Symbols
 ## 解决 Dingbats 过小的问题
 # font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
 font-codepoint-map = U+2500-U+27BF=Noto Sans Symbols 2
