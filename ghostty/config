@@ -207,6 +207,20 @@ window-decoration = auto
 window-inherit-font-size = true
 window-title-font-family = "JetBrainsMonoNL Nerd Font"
 
+# 渲染与屏幕刷新同步
+window-vsync = true
+
+# 新窗口是否继承当前文档 true或false
+window-inherit-working-directory = true
+tab-inherit-working-directory = true
+
+# 窗口装饰
+window-decoration = auto
+
+# 将字符网格无法占满的剩余空间尽量均匀分配到窗口两侧
+window-padding-balance = true
+
+
 #====================== 鼠标和系统剪贴板安全设置 ======================
 # clip
 clipboard-read = "allow"
@@ -225,12 +239,26 @@ macos-titlebar-style = tabs
 # macos-titlebar-proxy-icon = hidden
 macos-option-as-alt = true
 
+# 窗口红绿黄按钮
+macos-window-buttons = visible
+
+# 文件拖到dock后续行动
+macos-dock-drop-behavior = new-tab
+
 #====================== Linux 独有设置 ======================
 # Linux GTK 标题栏和标签栏
 # tab
 gtk-titlebar-style = native
 gtk-titlebar = false
 gtk-tabs-location = hidden
+
+# 单个终端进程（如一个分屏）最多能用多少内存，进程，失败处理
+linux-cgroup-memory-limit =
+linux-cgroup-processes-limit =
+linux-cgroup-hard-fail = false
+
+# 决定了新启动的 Ghostty 进程是新建窗口还是新建独立应用
+gtk-single-instance = detect
 
 #====================== 自动更新设置 ======================
 # update
