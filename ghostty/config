@@ -25,8 +25,8 @@ font-thicken-strength = 255
 # ## ⇡⇣ 问题
 # font-codepoint-map = U+21E1,U+21E3=Apple Symbols
 ## 解决 Dingbats 过小的问题
-# font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
-font-codepoint-map = U+2500-U+27BF=Noto Sans Symbols 2
+font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
+# font-codepoint-map = U+2500-U+27BF=Noto Sans Symbols 2
 
 # 允许字体缺乏时合成
 font-synthetic-style = bold,italic,bold-italic
@@ -234,6 +234,9 @@ clipboard-write = "allow"
 shell-integration-features = no-cursor
 
 #====================== macOS 独有设置 ======================
+# 禁用 Ghostty 为每个终端窗口、标签页或分屏创建独立的 systemd cgroup scope
+linux-cgroup = never
+
 # macOS 显示标签页; Linux GTK 隐藏标题栏和标签栏
 # macOS 标题栏和 Option 键行为
 macos-titlebar-style = tabs
