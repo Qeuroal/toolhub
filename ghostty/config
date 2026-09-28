@@ -203,7 +203,6 @@ keybind = performable:escape=end_search
 # window
 maximize = true
 # fullscreen = true
-window-decoration = auto
 window-inherit-font-size = true
 window-title-font-family = "JetBrainsMonoNL Nerd Font"
 
@@ -211,7 +210,7 @@ window-title-font-family = "JetBrainsMonoNL Nerd Font"
 window-vsync = true
 
 # 新窗口是否继承当前文档 true或false
-window-inherit-working-directory = true
+window-inherit-working-directory = false
 tab-inherit-working-directory = true
 
 # 窗口装饰
@@ -220,6 +219,8 @@ window-decoration = auto
 # 将字符网格无法占满的剩余空间尽量均匀分配到窗口两侧
 window-padding-balance = true
 
+# 不恢复上次窗口、Tab 和分屏状态
+window-save-state = never
 
 #====================== 鼠标和系统剪贴板安全设置 ======================
 # clip
