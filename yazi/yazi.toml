@@ -37,7 +37,7 @@ sort_sensitive = true
 sort_dir_first = true
 sort_reverse = false
 linemode = "size"
-show_hidden = false
+show_hidden = true
 show_symlink = true
 mouse_events = []
 
