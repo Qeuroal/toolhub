@@ -4,6 +4,8 @@ prepend_keymap = [
   { on = ["g", "c"], run = "noop" },
   { on = [ "g", "C" ], run = "cd ~/.config", desc = "Go ~/.config" },
   { on = [ "g", "p" ], run = "cd ~/projects", desc = "Go ~/projects" },
+  { on = [ "g", "/" ], run = "cd /", desc = "Go /" },
+  { on = [ "g", "m" ], run = "cd /mnt", desc = "Go /mnt" },
   { on = [ "g", "c", "p" ], run = "cd ~/.config/pithy_configs", desc = "Go ~/.config/pithy_configs" },
   { on = [ "g", "c", "m" ], run = "cd ~/.config/mihomo", desc = "Go ~/.config/mihomo" },
   { on = [ "g", "c", "c" ], run = "cd ~/.config/clash", desc = "Go ~/.config/clash" },
