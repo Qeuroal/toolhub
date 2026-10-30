@@ -10,7 +10,7 @@ imageedit = [
   { run = 'gimp %s', desc = "Gimp", for = "unix" },
 ]
 open = [
-  { run = 'linkhandler %s1', block = true, desc = "Open", for = "linux" },
+  { run = 'xdg-open %s1', desc = "Open", for = "linux" },
   { run = 'open %s', desc = "Open", for = "macos" },
   { run = 'start "" %s1', desc = "Open", for = "windows" },
 ]
