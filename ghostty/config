@@ -17,7 +17,7 @@ font-family = "LXGW WenKai Mono"
 font-family = "Noto Sans Mono CJK SC"
 
 # 字体配置
-font-size = 16
+font-size = 15.0
 font-thicken = true
 font-thicken-strength = 255
 
