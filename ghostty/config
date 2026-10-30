@@ -218,6 +218,7 @@ window-decoration = auto
 
 # 将字符网格无法占满的剩余空间尽量均匀分配到窗口两侧
 window-padding-balance = true
+window-padding-y = 0
 
 # 不恢复上次窗口、Tab 和分屏状态
 window-save-state = never
