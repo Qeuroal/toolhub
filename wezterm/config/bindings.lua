@@ -52,6 +52,8 @@ local keys = {
   },
 
   -- cursor movement --
+  -- Bypass the IME so the tmux prefix (C-q) reaches tmux on the first press.
+  { key = 'q',          mods = 'CTRL',        action = act.SendString('\u{11}') },
   { key = 'LeftArrow',  mods = mod.SUPER,     action = act.SendString('\u{1b}OH') },
   { key = 'RightArrow', mods = mod.SUPER,     action = act.SendString('\u{1b}OF') },
   { key = 'Backspace',  mods = mod.SUPER,     action = act.SendString('\u{15}') },
@@ -73,8 +75,8 @@ local keys = {
   { key = 'w',          mods = mod.SUPER_REV, action = act.CloseCurrentTab({ confirm = false }) },
 
   -- tabs: navigation
-  { key = '[',          mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
-  { key = ']',          mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
+  -- { key = '[',          mods = mod.SUPER,     action = act.ActivateTabRelative(-1) },
+  -- { key = ']',          mods = mod.SUPER,     action = act.ActivateTabRelative(1) },
   { key = 'Tab',        mods = 'CTRL',        action = wezterm.action.ActivateTabRelative(1), },
   { key = 'Tab',        mods = 'CTRL|SHIFT',  action = wezterm.action.ActivateTabRelative(-1), },
   { key = '[',          mods = mod.SUPER_REV, action = act.MoveTabRelative(-1) },
@@ -280,6 +282,17 @@ local key_tables = {
 
 ---@type MouseBinding[]
 local mouse_bindings = {
+  -- Disable mouse wheel scrolling
+  {
+    event = { Down = { streak = 1, button = { WheelUp = 1 } } },
+    mods = 'NONE',
+    action = act.Nop,
+  },
+  {
+    event = { Down = { streak = 1, button = { WheelDown = 1 } } },
+    mods = 'NONE',
+    action = act.Nop,
+  },
   -- Ctrl-click will open the link under the mouse cursor
   {
     event = { Up = { streak = 1, button = 'Left' } },

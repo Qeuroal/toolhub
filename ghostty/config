@@ -1,117 +1,180 @@
+# 显示 Ghostty 所有配置项 + 默认值 `ghostty +show-config --default`
+# 查看当前生效的配置包含你的修改 `ghostty +show-config`
+# 查看默认快捷键(keybings) `ghostty +list-keybinds --default`
+# 搜索筛选某个配置：`ghostty +show-config --default | grep font`
+
+#====================== 命令和通知 ======================
+# 复制和配置重载时显示应用内通知 (仅 Linux GTK 生效)
+app-notifications = clipboard-copy,config-reload
+# 关闭窗口不确认
+confirm-close-surface = false
+
+#====================== 字体和渲染设置 ======================
 # font
-font-family = "JetBrainsMonoNerdFont"
-font-size = 20
+# 字体按原有顺序设置, 包含中文回退字体
+font-family = "JetBrainsMonoNL Nerd Font"
+font-family = "LXGW WenKai Mono"
+font-family = "Noto Sans Mono CJK SC"
+
+# 字体配置
+font-size = 15.0
 font-thicken = true
 font-thicken-strength = 255
-window-inherit-font-size = true
-window-title-font-family = "JetBrainsMonoNL Nerd Font"
-adjust-underline-position = 4
 
+# 字体映射
+## ⇡⇣ 问题
+font-codepoint-map = U+21E1,U+21E3=MS Gothic
+## 解决 Dingbats 过小的问题
+font-codepoint-map = U+2700-U+27BF=Noto Sans Symbols 2
+# font-codepoint-map = U+2500-U+27BF=Noto Sans Symbols 2
+
+# 允许字体缺乏时合成
+font-synthetic-style = bold,italic,bold-italic
+
+# 高级字体特性（font-feature）配置控制字体的 OpenType 功能(开启或禁用),开启后配合下方的font-shaping-break使用
+font-feature = calt
+
+# 连字断开显示配合font-feature使用, 在光标指时候显示原始的符号比如!=显示
+font-shaping-break = cursor
+
+# 字体渲染模式(linear, native, linear-corrected)
+alpha-blending = linear-corrected
+
+#====================== 字体微调系统 ======================
 # cell
 adjust-cell-width = 0
 adjust-cell-height = 0
 
-# cursor
-cursor-style = block
-shell-integration-features = no-cursor
-cursor-style-blink = false
-cursor-color = #ff6347
-cursor-text = #ffffff
-macos-option-as-alt = true
+# 基线baseline调整
+adjust-font-baseline = 1
+
+# 下划线
+adjust-underline-position = 4
 adjust-underline-thickness = 1
-adjust-cursor-thickness = 4
+
+# 上划线
 adjust-overline-thickness = 2
-cursor-opacity = 1
 
-# mouse
-mouse-hide-while-typing = true
+# 光标粗细
+adjust-cursor-thickness = 4
 
-# clip
-clipboard-read = "allow"
-clipboard-write = "allow"
+# unicode 字符宽度
+grapheme-width-method = unicode
 
+# linux freetype 字体渲染
+freetype-load-flags = hinting,no-force-autohint,no-monochrome,autohint,light
+
+#====================== 主题选用 ======================
 # theme
 # onedarkpro, details: ghostty +list-themes
 theme = catppuccin-macchiato.conf
-# cursor-invert-fg-bg = true
 # window-theme = ghostty
 
+#====================== 光标行为 ======================
+# 光标形式 block, bar, underline, block_hollow
+cursor-style = block
+# 光标是否闪烁
+cursor-style-blink = false
+# 光标颜色
+cursor-color = #ff6347
+# 光标前景色
+cursor-text = #ffffff
+# 光标透明度
+cursor-opacity = 1
+# 光标可以在终端移动
+cursor-click-to-move = false
+
+#====================== 鼠标行为 ======================
+# 输入时隐藏鼠标
+mouse-hide-while-typing = true
+
+# 输出日志时保持查看位置, 不自动跳到底部
+scroll-to-bottom = keystroke,no-output
+
+# Shift 鼠标选择交给终端
+mouse-shift-capture = false
+
+# 允许程序使用鼠标
+mouse-reporting = true
+
+#====================== 背景和分屏行为 ======================
 # background
-background-opacity = 0.9
-background-blur = true
-
-# window
-maximize = true
-# fullscreen = true
-window-decoration = auto
-gtk-titlebar = false
-
-# tab
-gtk-tabs-location = top
-
+background-opacity = 1
+background-blur = false
 # split
 unfocused-split-opacity = 0.7
 split-divider-color = #3366ff
 
-# update
-auto-update = check
+# 搜索高亮颜色配置
+search-foreground = "#000000"
+search-background = "#FFD54F"
 
-# other
-# copy-on-select = clipboard
+search-selected-foreground = "#000000"
+search-selected-background = "#FF7043"
 
+#================= 滚动屏幕和链接link设置 ================
+# 历史滚动缓冲区最多占用多少内存(字节)
+scrollback-limit = 200000000
+
+# 侧边滚动条, never, system
+scrollbar = never
+
+# 点击link跳转
+link-url = true
+
+# link-previews预览
+link-previews = true
+
+# link正则匹配+点击触发动作, 包括不限于本地点击, localhost服务, IP服务等, 暂时ghostty无法配置
+#link = regex="localhost:[0-9]+" action="open"
+#link = regex="http://[0-9\\.]+:[0-9]+" action="open"
+#link = regex="(/var/log/[^ ]+)" action="open"
+#link = regex="(/[^ ]+\\.(py|js|ts|json))" action="open"
+
+# class中更改应用程序的类名/ID, 适用于Linux
+# class = "com.mycompany.terminal"
+
+# 终端启动后默认文件夹, 默认是继承启动进程的工作目录, 默认是home
+#working-directory = "inherit"
+
+#====================== keybind 字体屏幕和命令终端设置 ======================
 # keymapping
+# 清空默认快捷键, 此项须放在所有自定义快捷键之前
 keybind = clear
+#{{{> default
+# 重新载入配置
+keybind = super+shift+comma=reload_config
+# keybind = super+comma=unbind
+# 复制和粘贴
+keybind = super+c=copy_to_clipboard
+keybind = copy=copy_to_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+keybind = paste=paste_from_clipboard
+keybind = ctrl+shift+v=paste_from_clipboard
+# 全屏, 退出和发送回车
+keybind = super+enter=toggle_fullscreen
+keybind = super+q=quit
+keybind = ctrl+enter=text:\r
+
+#====================== keybind 翻页和滚屏设置 ======================
+# 按页滚动和逐行滚动
 keybind = ctrl+shift+u=scroll_page_up
 keybind = ctrl+shift+d=scroll_page_down
-# keybind = super+comma=unbind
-keybind = ctrl+shift+f=write_scrollback_file:paste
-# keybind = ctrl+shift+f=write_scrollback_file:open
+keybind = ctrl+shift+y=scroll_page_lines:-1
+keybind = ctrl+shift+e=scroll_page_lines:1
 
-#{{{> default
-# keybind = super+alt+shift+j=write_screen_file:open
-keybind = super+alt+shift+w=close_all_windows
-# keybind = super+ctrl+shift+j=write_screen_file:copy
-# keybind = super+alt+arrow_down=goto_split:down
-# keybind = super+alt+arrow_left=goto_split:left
-# keybind = super+alt+arrow_right=goto_split:right
-# keybind = super+alt+arrow_up=goto_split:up
-# keybind = super+alt+i=inspector:toggle
-keybind = super+alt+w=close_tab:this
-# keybind = super+ctrl+equal=equalize_splits
-# keybind = super+ctrl+arrow_down=resize_split:down,10
-# keybind = super+ctrl+arrow_left=resize_split:left,10
-# keybind = super+ctrl+arrow_right=resize_split:right,10
-# keybind = super+ctrl+arrow_up=resize_split:up,10
-# keybind = super+ctrl+f=toggle_fullscreen
-# keybind = super+shift+bracket_left=previous_tab
-# keybind = super+shift+bracket_right=next_tab
-keybind = super+shift+,=reload_config
-# keybind = super+shift+enter=toggle_split_zoom
-# keybind = super+shift+arrow_down=jump_to_prompt:1
-# keybind = super+shift+arrow_up=jump_to_prompt:-1
-# keybind = super+shift+d=new_split:down
-# keybind = super+shift+j=write_screen_file:paste
-# keybind = super+shift+p=toggle_command_palette
-# keybind = super+shift+t=undo
-# keybind = super+shift+v=paste_from_selection
-keybind = super+shift+w=close_window
-# keybind = super+shift+z=redo
+#====================== tab 设置 ======================
+# 新增, 切换和关闭标签页
+keybind = super+t=new_tab
+# 撤销关闭的tab
+keybind = super+shift+t=undo
+keybind = super+shift+bracket_left=previous_tab
 keybind = ctrl+shift+tab=previous_tab
-# keybind = super+bracket_left=goto_split:previous
-# keybind = super+bracket_right=goto_split:next
-keybind = super+digit_1=goto_tab:1
-keybind = super+digit_2=goto_tab:2
-keybind = super+digit_3=goto_tab:3
-keybind = super+digit_4=goto_tab:4
-keybind = super+digit_5=goto_tab:5
-keybind = super+digit_6=goto_tab:6
-keybind = super+digit_7=goto_tab:7
-keybind = super+digit_8=goto_tab:8
-# keybind = super+equal=increase_font_size:1
-# keybind = super++increase_font_size:1
-keybind = super+,=open_config
-# keybind = super+-=decrease_font_size:1
-# keybind = super+0=reset_font_size
+keybind = super+shift+bracket_right=next_tab
+keybind = ctrl+tab=next_tab
+keybind = super+alt+w=close_tab:this
+# 按序号切换标签页
 keybind = super+1=goto_tab:1
 keybind = super+2=goto_tab:2
 keybind = super+3=goto_tab:3
@@ -121,39 +184,90 @@ keybind = super+6=goto_tab:6
 keybind = super+7=goto_tab:7
 keybind = super+8=goto_tab:8
 keybind = super+9=last_tab
-# keybind = super+backspace=text:\\x15
-# keybind = super+enter=toggle_fullscreen
-# keybind = super+end=scroll_to_bottom
-# keybind = super+home=scroll_to_top
-# keybind = super+page_down=scroll_page_down
-# keybind = super+page_up=scroll_page_up
-# keybind = super+arrow_down=jump_to_prompt:1
-# keybind = super+arrow_left=text:\\x01
-# keybind = super+arrow_right=text:\\x05
-# keybind = super+arrow_up=jump_to_prompt:-1
-# keybind = super+a=select_all
-keybind = super+c=copy_to_clipboard
-# keybind = super+d=new_split:right
-# keybind = super+k=clear_screen
+
+#====================== windows 和分屏操作 ======================
+# 新建窗口, 关闭当前终端和关闭窗口
 keybind = super+n=new_window
-keybind = super+q=quit
-keybind = super+t=new_tab
-keybind = super+v=paste_from_clipboard
+keybind = ctrl+shift+n=new_window
 keybind = super+w=close_surface
-# keybind = super+z=undo
-# keybind = alt+arrow_left=esc:b
-# keybind = alt+arrow_right=esc:f
-keybind = ctrl+tab=next_tab
-# keybind = shift+end=adjust_selection:end
-# keybind = shift+home=adjust_selection:home
-# keybind = shift+page_down=adjust_selection:page_down
-# keybind = shift+page_up=adjust_selection:page_up
-# keybind = shift+arrow_down=adjust_selection:down
-# keybind = shift+arrow_left=adjust_selection:left
-# keybind = shift+arrow_right=adjust_selection:right
-# keybind = shift+arrow_up=adjust_selection:up
-keybind = copy=copy_to_clipboard
-keybind = paste=paste_from_clipboard
+keybind = super+shift+w=close_window
+keybind = all:super+alt+shift+w=close_window
+
+#====================== 搜索设置 ======================
+keybind = super+f=start_search
+keybind = ctrl+shift+f=start_search
+keybind = performable:escape=end_search
 #<}}}
 
+#====================== 终端 windows 窗口控制 ======================
+# window
+maximize = true
+# fullscreen = true
+window-inherit-font-size = true
+window-title-font-family = "JetBrainsMonoNL Nerd Font"
 
+# 渲染与屏幕刷新同步
+window-vsync = true
+
+# 新窗口是否继承当前文档 true或false
+window-inherit-working-directory = false
+tab-inherit-working-directory = true
+
+# 窗口装饰
+window-decoration = auto
+
+# 将字符网格无法占满的剩余空间尽量均匀分配到窗口两侧
+window-padding-balance = true
+window-padding-y = 0
+
+# 不恢复上次窗口、Tab 和分屏状态
+window-save-state = never
+
+#====================== 鼠标和系统剪贴板安全设置 ======================
+# clip
+clipboard-read = "allow"
+clipboard-write = "allow"
+# other
+# copy-on-select = clipboard
+
+#====================== shell 设置 ======================
+# 禁止 shell 集成修改光标样式
+shell-integration-features = no-cursor
+
+#====================== macOS 独有设置 ======================
+# 禁用 Ghostty 为每个终端窗口、标签页或分屏创建独立的 systemd cgroup scope
+linux-cgroup = never
+
+# macOS 显示标签页; Linux GTK 隐藏标题栏和标签栏
+# macOS 标题栏和 Option 键行为
+macos-titlebar-style = tabs
+# macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+# 窗口红绿黄按钮
+macos-window-buttons = visible
+
+# 文件拖到dock后续行动
+macos-dock-drop-behavior = new-tab
+
+#====================== Linux 独有设置 ======================
+# Linux GTK 标题栏和标签栏
+# tab
+gtk-titlebar-style = native
+gtk-titlebar = false
+gtk-tabs-location = hidden
+
+# 单个终端进程（如一个分屏）最多能用多少内存，进程，失败处理
+linux-cgroup-memory-limit =
+linux-cgroup-processes-limit =
+linux-cgroup-hard-fail = false
+
+# 决定了新启动的 Ghostty 进程是新建窗口还是新建独立应用
+gtk-single-instance = detect
+
+#====================== 自动更新设置 ======================
+# update
+auto-update = check
+auto-update-channel = tip
+
+# vim:ft=conf:tw=120:ts=4:sts=-1:sw=0:et:fdm=marker:

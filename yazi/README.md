@@ -1,3 +1,7 @@
+# config
+
+## macos/linux
+
 1. 在 `.bashrc` 或 `.zshrc` 中添加如下:
 
 ```bashrc
@@ -13,3 +17,8 @@ function y() {
 ```
 
 1. 下载配置文件夹到 `~/.config/yazi`
+
+# references
+
+- [preset](https://github.com/sxyazi/yazi/tree/shipped/yazi-config/preset)
+
