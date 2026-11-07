@@ -10,7 +10,7 @@ imageedit = [
   { run = 'gimp %s', desc = "Gimp", for = "unix" },
 ]
 open = [
-  { run = 'xdg-open %s1', desc = "Open", for = "linux" },
+  { run = 'env LANGUAGE=zh_CN:zh LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8 xdg-open %s1', desc = "Open", for = "linux" },
   { run = 'open %s', desc = "Open", for = "macos" },
   { run = 'start "" %s1', desc = "Open", for = "windows" },
 ]
