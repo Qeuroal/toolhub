@@ -9,6 +9,9 @@ edit = [
 imageedit = [
   { run = 'gimp %s', desc = "Gimp", for = "unix" },
 ]
+pdf = [
+  { run = 'okular %s1', desc = "Okular", orphan = true, for = "linux" },
+]
 open = [
   { run = 'env LANGUAGE=zh_CN:zh LC_ALL=zh_CN.UTF-8 LANG=zh_CN.UTF-8 xdg-open %s1', desc = "Open", for = "linux" },
   { run = 'open %s', desc = "Open", for = "macos" },
@@ -46,8 +49,11 @@ rules = [
   # Folder
   { mime = "inode/directory", use = [ "edit", "open", "reveal" ] },
   { url = "*/", use = [ "edit", "open", "reveal" ] },
+  # PDF
+  { mime = "application/pdf", use = [ "pdf", "open", "reveal" ] },
+  { url = "*.pdf", use = [ "pdf", "open", "reveal" ] },
   # Office
-  { url = "*.{doc,docx,pdf,xls,xlsx,ppt,pptx}", use = [ "open", "reveal" ] },
+  { url = "*.{doc,docx,xls,xlsx,ppt,pptx}", use = [ "open", "reveal" ] },
   # MPEG transport stream
   { url = "*.ts", use = [ "play", "reveal" ] },
   # Text
