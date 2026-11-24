@@ -16,8 +16,8 @@ prepend_keymap = [
   # smart filter
   { on = [ "F" ], run = "plugin smart-filter", desc = "Smart filter" },
   # file-clipboard
-  { on = "y", run = [ "yank", "plugin file-clipboard -- --action=copy" ], desc = "Copy files to system clipboard" },
-  { on = "x", run = [ "yank --cut", "plugin file-clipboard -- --action=copy" ], desc = "Cut files and copy to system clipboard" },
-  { on = "<C-p>", run = "plugin file-clipboard -- --action=paste", desc = "Paste files from system clipboard" },
+  { on = [ "c", "y" ], run = [ "yank", "plugin file-clipboard -- --action=copy" ], desc = "Copy files to system clipboard" },
+  { on = [ "c", "x" ], run = [ "yank --cut", "plugin file-clipboard -- --action=copy" ], desc = "Cut files and copy to system clipboard" },
+  { on = [ "c", "p" ], run = "plugin file-clipboard -- --action=paste", desc = "Paste files from system clipboard" },
   #<}}}
 ]
